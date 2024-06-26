@@ -1,5 +1,5 @@
 #include "Device_Manifest.h"
-#include "Pokerobo_DEV.h"
+#include "Pokerobo_Dev.h"
 
 UserInformation _userInformationObject;
 VendorSignature _vendorSignatureObject;

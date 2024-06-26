@@ -1,50 +1,18 @@
-#include "Pokerobo_DEV.h"
 #include "Device_Manifest.h"
-#include <EEPROM.h>
-
-size_t _strnlen(const char * s, size_t len) {
-  size_t i = 0;
-  for ( ; i < len && s[i] != '\0'; ++i);
-  return i;
-}
+#include "Pokerobo_DEV.h"
 
 UserInformation _userInformationObject;
 VendorSignature _vendorSignatureObject;
 DeviceSignature _deviceSignatureObject;
-
-uint16_t getFirstIndex() {
-  return EEPROM.length();
-}
-
-void loadDeviceSignature() {
-  int stampAddr = getFirstIndex() - RESERVED_BYTES_LENGTH
-      - sizeof(DeviceSignature);
-  EEPROM.get(stampAddr, _deviceSignatureObject);
-}
-
-void loadVendorSignature() {
-  int stampAddr = getFirstIndex() - RESERVED_BYTES_LENGTH
-      - sizeof(DeviceSignature)
-      - sizeof(VendorSignature);
-  EEPROM.get(stampAddr, _vendorSignatureObject);
-}
-
-void loadUserInformation() {
-  int stampAddr = getFirstIndex() - RESERVED_BYTES_LENGTH
-      - sizeof(DeviceSignature)
-      - sizeof(VendorSignature)
-      - sizeof(UserInformation);
-  EEPROM.get(stampAddr, _userInformationObject);
-}
 
 static uint8_t DeviceManifest::vendorCodeMaxLength = VENDOR_CODE_LENGTH;
 static uint8_t DeviceManifest::phoneNumberMaxLength = PHONE_NUMBER_LENGTH;
 static uint8_t DeviceManifest::userNameMaxLength = USER_NAME_LENGTH;
 
 DeviceManifest::DeviceManifest() {
-  loadDeviceSignature();
-  loadVendorSignature();
-  loadUserInformation();
+  loadManifest(getDeviceSignatureIndex(), _deviceSignatureObject);
+  loadManifest(getVendorSignatureIndex(), _vendorSignatureObject);
+  loadManifest(getUserInformationIndex(), _userInformationObject);
 }
 
 bool DeviceManifest::available() {

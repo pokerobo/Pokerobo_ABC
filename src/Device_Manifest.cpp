@@ -28,21 +28,19 @@ uint16_t DeviceManifest::getDeviceId() {
 }
 
 int DeviceManifest::getVendorCodeLength() {
-  return _strnlen(_vendorSignatureObject.code, VENDOR_CODE_LENGTH);
+  return _vendorSignatureObject.getVendorCodeLength();
 }
 
 char* DeviceManifest::getVendorCode() {
-  _vendorSignatureObject.code[VENDOR_CODE_LENGTH] = '\0';
-  return _vendorSignatureObject.code;
+  return _vendorSignatureObject.getVendorCode();
 }
 
 int DeviceManifest::getPhoneNumberLength() {
-  return _strnlen(_vendorSignatureObject.phoneNumber, PHONE_NUMBER_LENGTH);
+  return _vendorSignatureObject.getPhoneNumberLength();
 }
 
 char* DeviceManifest::getPhoneNumber() {
-  _vendorSignatureObject.phoneNumber[PHONE_NUMBER_LENGTH] = '\0';
-  return _vendorSignatureObject.phoneNumber;
+  return _vendorSignatureObject.getPhoneNumber();
 }
 
 uint16_t DeviceManifest::getUserId() {
@@ -50,10 +48,9 @@ uint16_t DeviceManifest::getUserId() {
 }
 
 int DeviceManifest::getUserNameLength() {
-  return _strnlen(_userInformationObject.userName, USER_NAME_LENGTH);
+  return _userInformationObject.getUserNameLength();
 }
 
 char* DeviceManifest::getUserName() {
-  _userInformationObject.userName[USER_NAME_LENGTH] = '\0';
-  return _userInformationObject.userName;
+  return _userInformationObject.getUserName();
 }

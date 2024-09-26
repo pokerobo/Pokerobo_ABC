@@ -5,9 +5,9 @@ UserInformation _userInformationObject;
 VendorSignature _vendorSignatureObject;
 DeviceSignature _deviceSignatureObject;
 
-static uint8_t DeviceManifest::vendorCodeMaxLength = VENDOR_CODE_LENGTH;
-static uint8_t DeviceManifest::phoneNumberMaxLength = PHONE_NUMBER_LENGTH;
-static uint8_t DeviceManifest::userNameMaxLength = USER_NAME_LENGTH;
+uint8_t DeviceManifest::vendorCodeMaxLength = VENDOR_CODE_LENGTH;
+uint8_t DeviceManifest::phoneNumberMaxLength = PHONE_NUMBER_LENGTH;
+uint8_t DeviceManifest::userNameMaxLength = USER_NAME_LENGTH;
 
 DeviceManifest::DeviceManifest() {
   loadManifest(getDeviceSignatureIndex(), _deviceSignatureObject);

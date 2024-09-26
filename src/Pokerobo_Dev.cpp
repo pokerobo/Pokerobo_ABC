@@ -1,6 +1,6 @@
 #include "Pokerobo_Dev.h"
 
-char* _sanitize(uint8_t* arr, uint16_t bound) {
+char* _sanitize(char* arr, uint16_t bound) {
   arr[bound] = '\0';
   for(uint16_t i=bound; i>= 0 && (arr[i] == 0xFF || arr[i] == 0); i--) {
     arr[i] = '\0';

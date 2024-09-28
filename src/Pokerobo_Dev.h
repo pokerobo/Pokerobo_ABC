@@ -1,5 +1,5 @@
-#ifndef __POKEROBO_ABC_DEVICE_STRUCTURE_H__
-#define __POKEROBO_ABC_DEVICE_STRUCTURE_H__
+#ifndef __POKEROBO_ABC_DEVICE_STRUCT_H__
+#define __POKEROBO_ABC_DEVICE_STRUCT_H__
 
 #include <Arduino.h>
 #include <EEPROM.h>
@@ -9,7 +9,7 @@
 #define VENDOR_CODE_LENGTH          20
 #define RESERVED_BYTES_LENGTH        4
 
-// 19 = 2 + 16 + 1
+// 19 = 16 + 1 + 2
 struct UserInformation {
   char userName[USER_NAME_LENGTH + 1];
   uint16_t userId = 0;
@@ -51,4 +51,4 @@ template<typename T> const T &saveManifest(uint16_t idx, const T &t){
 
 size_t _strnlen(const char * s, size_t len);
 
-#endif
+#endif//__POKEROBO_ABC_DEVICE_STRUCT_H__
